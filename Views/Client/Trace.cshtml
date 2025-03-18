@@ -1,0 +1,79 @@
+<header class="container-fluid header">
+    <div class="row h-100">
+        <div class="col-auto align-self-center">
+            <a class="btn btn-link back-btn text-color-theme" onclick="goBack()" style="color: #FF1C52;">
+                <i class="bi bi-arrow-right size-20"></i>
+            </a>
+            <script>
+                function goBack() {
+                    window.history.Traces.back();
+                }
+            </script>
+
+        </div>
+        <div class="col text-center align-self-center">
+            <h5 class="mb-0">گزارشات مالی</h5>
+        </div>
+
+        <div class="col-auto align-self-center">
+            <a href="/Client/profile" class="link text-color-theme" style="color: #FF1C52;">
+                <i class="bi bi-person-circle size-22"></i>
+            </a>
+        </div>
+    </div>
+</header>
+
+<div class="main-container container">
+    <!-- Ordernumber  -->
+    <div class="row mb-3">
+        <div class="col">
+            <p class="text-opac">موجودی : @ViewBag.Traces.Balance</p>
+        </div>
+        <div class="col-auto text-end">
+            <p class="text-opac">تعداد تراکنشات : @ViewBag.Traces.TraceHistories.Count</p>
+        </div>
+    </div>
+
+    <!-- items -->
+    <div class="row ">
+        <div class="col-12">
+            <div class="card card-light shadow-sm mb-4">
+                <ul class="list-group">
+                    @foreach (TraceHistory trace in ViewBag.Traces.TraceHistories)
+                    {
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col">
+                                    <p class="mb-1 fw-bold">@trace.Title [@trace.Date]</p>
+                                    <p class="text-opac"> @trace.Description</p>
+                                </div>
+                                <div class="col-auto mt-3">@trace.Amount
+                                    @if (trace.type == TransactionType.Withdrawal)
+                                    {
+                                        <i class="bi bi-dash fs-5" style="color: red;"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="bi bi-plus fs-5" style="color: green;"></i>
+                                    }
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button -->
+    <div class="row mb-4">
+        <div class="col-12 col-md-6 col-lg-4 mx-auto">
+            <div class="row">
+                <div class="col align-self-center d-grid">
+                    <a href="/Client/AddMoney" class="btn btn-default shadow-sm">افزودن موجودی</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

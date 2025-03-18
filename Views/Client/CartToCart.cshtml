@@ -1,0 +1,76 @@
+<header class="container-fluid header">
+    <div class="row h-100">
+        <div class="col-auto align-self-center">
+            <a class="btn btn-link back-btn text-color-theme" onclick="goBack()" style="color: #FF1C52;">
+                <i class="bi bi-arrow-right size-20"></i>
+            </a>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+
+        </div>
+        <div class="col text-center align-self-center">
+            <h5 class="mb-0">کارت به کارت</h5>
+        </div>
+
+        <div class="col-auto align-self-center">
+            <a href="/Client/profile" class="link text-color-theme" style="color: #FF1C52;">
+                <i class="bi bi-person-circle size-22"></i>
+            </a>
+        </div>
+    </div>
+</header>
+<!-- Header ends -->
+
+<!-- main page content -->
+<div class="main-container container">
+    <form action="" method="post">
+
+
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mx-auto">
+                <div class="card card-light shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="pincode" placeholder="مقدار شارژ را وارد کنید"
+                                name="Price">
+                            <label for="pincode">مبلغ (تومان)</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="CardNumber"
+                                placeholder="شماره کارت را وارد کنید : " name="ClientCardNumber">
+                            <label for="CardNumber">شماره کارت مبدا</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="ourCard" readonly value="@ViewBag.card.CardNumber">
+                            <input type="hidden" name="CardId" value="@ViewBag.card.Id">
+                            <label for="ourCard">شماره کارت مقصد</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="ourBank" readonly value="@ViewBag.card.CardBank">
+                            <label for="ourBank">بانک مقصد</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="ourName" readonly value="@ViewBag.card.CardName">
+                            <label for="ourName">به نام</label>
+                        </div>
+
+                        <div class="alert alert-info mt-4 mb-3" role="alert">
+                            <strong>حداقل زمان شارژ موجودی 5 دقیقه می‌باشد.</strong><br>
+                            لطفا صبر نمایید و از دادن گزارش جدید خودداری کنید.
+                        </div>
+
+                        <div class="d-grid"><button type="submit" class=" btn btn-lg btn-default shadow-sm">تایید
+                                و ثبت درخواست</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

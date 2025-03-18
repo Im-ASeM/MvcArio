@@ -1,0 +1,250 @@
+﻿@using Extensions
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="col-xxl">
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-solid-danger alert-dismissible d-flex align-items-center" role="alert">
+                @TempData["Error"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @* table show list category and delete and edit *@
+        <div class="card mb-4 table-responsive">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <form method="get" action="@Url.Action("Index")" class="d-flex">
+                    <div class="input-group input-group-sm">
+                        <a href="@Url.Action("Index")" class="btn" type="submit">
+                            <i class="tf-icon bx bx-x"></i>
+                        </a>
+                        <input type="text" name="searchTerm" class="form-control" placeholder="جستجو..."
+                            aria-label="جستجو..." value="@Context.Request.Query["searchTerm"]" />
+                        <button class="btn btn-primary" type="submit">
+                            <i class="tf-icon bx bx-search"></i>
+                        </button>
+                    </div>
+                </form>
+                <small class="text-muted float-end primary-font">تعداد درخواست ها : @ViewBag.pagination.TotalCount</small>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="white-space: nowrap;">ردیف</th>
+                                <th scope="col" style="white-space: nowrap;">نام</th>
+                                <th scope="col" style="white-space: nowrap;">نام کاربری</th>
+                                <th scope="col" style="white-space: nowrap;">شماره کارت مشتری</th>
+                                <th scope="col" style="white-space: nowrap;">مبلغ</th>
+                                <th scope="col" style="white-space: nowrap;">تاریخ / ساعت</th>
+                                <th scope="col" style="white-space: nowrap;">وضعیت</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.pagination.Items != null)
+                            {
+                                int i = 1;
+                                foreach (WithdrawalRequest item in ViewBag.pagination.Items)
+                                {
+                                    <tr>
+                                        <td scope="row">@i</td>
+                                        <td style="white-space: nowrap;">@item.User.Name</td>
+                                        <td style="white-space: nowrap;">@item.User.UserName</td>
+                                        <td style="white-space: nowrap;">@item.ClientCardNumber</td>
+                                        <td style="white-space: nowrap;">@item.Amount</td>
+                                        <td style="white-space: nowrap;"><span
+                                                class="time24hr">@PersianDate.ToPersianDateString(item.CreateDateTime)
+                                                [@(item.CreateDateTime.Hour.ToString().Count() == 1 ? $"0{item.CreateDateTime.Hour}" : item.CreateDateTime.Hour):@(item.CreateDateTime.Minute.ToString().Count() == 1 ? $"0{item.CreateDateTime.Minute}" : item.CreateDateTime.Minute)]</span>
+                                        </td>
+                                        <td style="white-space: nowrap;">
+                                            @if (item.IsValid == true)
+                                            {
+                                                <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#Modal@(item.Id)">
+                                                    انجام شده
+                                                </button>
+                                            }
+                                            else if (item.IsValid == false)
+                                            {
+                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Modal@(item.Id)">
+                                                    انجام نشده شده
+                                                </button>
+                                            }
+                                        </td>
+                                        @* <td>
+                                            <div style="display: flex; gap: 5px;">
+                                                <a href="/admin/pay/UserReports?UserId=@item.Id" class="btn btn-primary btn-sm"
+                                                    style="white-space: nowrap;">مشاهده گزارشات مالی</a>
+                                                <a href="/admin/home/UserStatus/@item.Id" class="btn btn-danger btn-sm"
+                                                    style="white-space: nowrap;"
+                                                    onclick="return confirm('آیا از تغییر وضعیت کاربر مطمئن هستید ؟')">تغییر
+                                                    وضعیت</a>
+                                            </div>
+                                        </td> *@
+                                    </tr>
+                                    i++;
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination pagination-sm justify-content-center">
+                        <li class="page-item @(ViewBag.Pagination.CurrentPage == 1 ? "disabled" : "")">
+                            <a class="page-link"
+                                href="@Url.Action("Index", new { page = ViewBag.Pagination.CurrentPage - 1 })">
+                                <i class="tf-icon bx bx-chevrons-right"></i>
+                            </a>
+                        </li>
+
+                        @if (ViewBag.Pagination.TotalPages <= 5)
+                        {
+                            for (int i = 1; i <= ViewBag.Pagination.TotalPages; i++)
+                            {
+                                <li class="page-item @(ViewBag.Pagination.CurrentPage == i ? "active" : "")">
+                                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li class="page-item @(ViewBag.Pagination.CurrentPage == 1 ? "active" : "")">
+                                <a class="page-link" href="@Url.Action("Index", new { page = 1 })">1</a>
+                            </li>
+
+                            @if (ViewBag.Pagination.CurrentPage > 3)
+                            {
+                                <li class="page-item disabled"><span class="page-link">...</span></li>
+                            }
+
+                            for (int i = Math.Max(2, ViewBag.Pagination.CurrentPage - 2); i <=
+                            Math.Min(ViewBag.Pagination.CurrentPage + 2, ViewBag.Pagination.TotalPages - 1); i++)
+                            {
+                                <li class="page-item @(ViewBag.Pagination.CurrentPage == i ? "active" : "")">
+                                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                                </li>
+                            }
+
+                            @if (ViewBag.Pagination.CurrentPage < ViewBag.Pagination.TotalPages - 2)
+                            {
+                                <li class="page-item disabled"><span class="page-link">...</span></li>
+                            }
+
+                            <li
+                                class="page-item @(ViewBag.Pagination.CurrentPage == ViewBag.Pagination.TotalPages ? "active" : "")">
+                                <a class="page-link"
+                                    href="@Url.Action("Index", new { page = ViewBag.Pagination.TotalPages })">@ViewBag.Pagination.TotalPages</a>
+                            </li>
+                        }
+
+                        <li
+                            class="page-item @(ViewBag.Pagination.CurrentPage == ViewBag.Pagination.TotalPages ? "disabled" : "")">
+                            <a class="page-link"
+                                href="@Url.Action("Index", new { page = ViewBag.Pagination.CurrentPage + 1 })">
+                                <i class="tf-icon bx bx-chevrons-left"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+@foreach (WithdrawalRequest item in ViewBag.Pagination.Items)
+{
+    if (item.IsValid == false)
+    {
+        <div class="modal-onboarding modal fade animate__animated" id="Modal@(item.Id)" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content text-center">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="post" action="/admin/pay/WithdrawReview">
+                        <div class="modal-body onboarding-horizontal p-0">
+                            <div class="onboarding-content mb-0">
+                                <h4 class="onboarding-title text-body secondary-font">بررسی درخواست دریافت وجه</h4>
+                                <div class="onboarding-info lh-2">
+                                    <div class="text-start p-2">
+                                        <p class="">
+                                            با توجه به درخواست شما برای بررسی فرآیند انتقال موجودی از حساب کاربر به حساب مجموعه،
+                                            لازم است که چند نکته مهم را در نظر داشته باشید. این فرآیند به دلیل حساسیت بالای
+                                            اطلاعات
+                                            مالی و تأثیر مستقیم آن بر روی حساب‌های کاربران و مجموعه، نیازمند دقت و احتیاط فراوان
+                                            است.
+                                        </p>
+                                        <p class="">
+                                            لطفاً توجه داشته باشید که <u class="text-warning">انتقال موجودی یک اقدام غیرقابل
+                                                برگشت
+                                                است.</u> به این معنا که
+                                            اگر
+                                            در مراحل انجام این عملیات، اشتباهی رخ دهد، امکان اصلاح و بازگشت به وضعیت قبلی وجود
+                                            ندارد. این موضوع می‌تواند منجر به مشکلات جدی برای کاربران و همچنین اعتبار مجموعه
+                                            شود.
+                                        </p>
+                                        <p class="">
+                                            بنابراین، قبل از انجام هرگونه انتقال، اطمینان حاصل کنید که اطلاعات ورودی به‌دقت
+                                            بررسی
+                                            شده و تمامی جوانب این عملیات سنجیده شده است.
+                                            <br>
+                                            در نهایت، به یاد داشته باشید که مسئولیت هرگونه اشتباه در این فرآیند بر عهده شما
+                                            خواهد
+                                            بود. بنابراین، دقت و احتیاط لازم را در این زمینه به کار ببرید.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="mb-3">
+                                            <label for="messageEx7" class="form-label">توضیحات <span
+                                                    class="text-danger">*</span></label>
+                                            <textarea class="form-control" id="messageEx7" rows="4" name="msg"
+                                                placeholder="توضیحات را وارد کنید ..."
+                                                required>@item.Description 
+در تاریخ @PersianDate.ToPersianDateString(DateTime.Now) ساعت @(DateTime.Now.Hour.ToString().Count() == 1 ? $"0{DateTime.Now.Hour}" : DateTime.Now.Hour):@(DateTime.Now.Minute.ToString().Count() == 1 ? $"0{DateTime.Now.Minute}" : DateTime.Now.Minute) انتقال صورت گرفت .</textarea>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" value="@item.Id" name="Id">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer border-0 d-flex align-items-center">
+                            <div class="ms-auto">
+                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                                    بستن
+                                </button>
+                                <button type="submit" class="btn btn-success">ثبت</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+    else{
+        <div class="modal-onboarding modal fade animate__animated" id="Modal@(item.Id)" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content text-center">
+                    <p class="text-muted close-label ms-5">بازبینی در تاریخ : @PersianDate.ToPersianDateString(item.CheckTime) [@(item.CheckTime.Hour.ToString().Count() == 1 ? $"0{item.CheckTime.Hour}" : item.CheckTime.Hour):@(item.CheckTime.Minute.ToString().Count() == 1 ? $"0{item.CheckTime.Minute}" : item.CheckTime.Minute)]</p>
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body ">
+                        <div class="onboarding-content mb-0">
+                            <h4 class="onboarding-title text-body secondary-font">مشاهده توضیحات :</h4>
+                            <div class="onboarding-info lh-2">
+                                @item.Description
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                        بستن
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

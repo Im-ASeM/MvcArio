@@ -1,0 +1,92 @@
+@(Layout = null)
+<!doctype html>
+<html lang="en" class="h-100">
+
+
+<!-- signup.html   -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="/assets/font/bootstrap-icons.css">
+
+    <!-- swiper css -->
+    <link rel="stylesheet" href="/assets/vendor/swiperjs-6.6.2/swiper-bundle.min.css">
+
+    <!-- style css for this template -->
+    <link href="/assets/css/style.css" rel="stylesheet" id="style">
+
+</head>
+
+<body class="body-scroll d-flex flex-column h-100 dark-bg bg1" data-page="signup">
+    <main class="container-fluid h-100 main-container">
+        <div class="row h-100">
+            <div class="col-12 mx-auto text-center" style="margin-top: 80px;">
+                <div class="row h-100">
+                    <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3 mx-auto align-self-center">
+                        <h4 class="text-center mb-4">ثبت نام</h4>
+                        @if (TempData["Success"] != null)
+                        {
+                            <Alert Color="AlertColor.Success" Dismissable="false">
+                                <Icon Name="IconName.CheckCircleFill" class="me-2"></Icon>ثبت نام با موفقیت انجام شده
+                            </Alert>
+                        }
+                        @if (TempData["Error"] != null)
+                        {
+                            <Alert Color="AlertColor.Danger" Dismissable="false">
+                                <Icon Name="IconName.CheckCircleFill" class="me-2"></Icon> @TempData["Error"]
+                            </Alert>
+                        }
+                        <div class="card card-light shadow-sm mb-4">
+                            <div class="card-body">
+                                <form action="/Client/Register" method="post">
+                                    <div class="form-floating mb-3">
+                                        <input required type="text" class="form-control" name="Name">
+                                        <label for="username">نام و نام خانوادگی را وارد کنید </label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input required type="text" class="form-control" name="PhoneNumber">
+                                        <label for="username"> شماره تلفن را وارد کنید </label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input required type="text" class="form-control" name="UserName">
+                                        <label for="username"> نام کاربری را وارد کنید </label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control" id="password"
+                                            placeholder="رمز عبور شما" name="Password">
+                                        <label for="password">کلمه عبور</label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input required type="checkbox" class="form-check-input" id="termsCheckbox">
+                                        <label class="form-check-label" for="termsCheckbox">
+                                            با <a href="/rules">شرایط و ضوابط</a> موافقم
+                                        </label>
+                                    </div>
+
+                                    <div class="d-grid"><button type="submit"
+                                            class="btn btn-lg btn-default shadow-sm">ثبت نام</button></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 text-center align-self-end py-2">
+                <div class="row">
+                    <div class="col text-center">
+                        از قبل حساب دارید؟ <a href="/Client/Signin" class="btn btn-link px-0 ms-2">ورود<i
+                                class="bi bi-chevron-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+
+<!-- signup.html   -->
+
+</html>

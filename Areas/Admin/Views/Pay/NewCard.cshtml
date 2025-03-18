@@ -1,0 +1,46 @@
+@using Extensions
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="col-xxl">
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-solid-success alert-dismissible d-flex align-items-center" role="alert">
+                @TempData["Success"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-solid-danger alert-dismissible d-flex align-items-center" role="alert">
+                @TempData["Error"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">افزودن کارت جدید</h5>
+            </div>
+            <div class="card-body">
+                <form method="post" action="/admin/pay/AddCard">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="CardName" class="form-label">نام مالک</label>
+                            <input type="text" class="form-control" id="CardName" name="CardName" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="CardBank" class="form-label">نام بانک</label>
+                            <input type="text" class="form-control" id="CardBank" name="CardBank" required />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="CardNumber" class="form-label">شماره کارت</label>
+                        <input type="text" class="form-control" id="CardNumber" name="CardNumber" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary">افزودن کارت</button>
+                    <a href="@Url.Action("Cards")" class="btn btn-secondary">بازگشت</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,150 @@
+﻿<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="col-xxl">
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-solid-danger alert-dismissible d-flex align-items-center" role="alert">
+                @TempData["Error"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-solid-success alert-dismissible d-flex align-items-center" role="alert">
+                @TempData["Success"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        @* table show list category and delete and edit *@
+        <div class="card mb-4 table-responsive">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <form method="get" action="@Url.Action("Index")" class="d-flex">
+                    <div class="input-group input-group-sm">
+                        <a href="@Url.Action("Index")" class="btn" type="submit">
+                            <i class="tf-icon bx bx-x"></i>
+                        </a>
+                        <input type="text" name="searchTerm" class="form-control" placeholder="جستجو..."
+                            aria-label="جستجو..." value="@Context.Request.Query["searchTerm"]" />
+                        <button class="btn btn-primary" type="submit">
+                            <i class="tf-icon bx bx-search"></i>
+                        </button>
+                    </div>
+                </form>
+                <small class="text-muted float-end primary-font">تعداد کاربران : @ViewBag.pagination.TotalCount</small>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">ردیف</th>
+                                <th scope="col" class="text-center">نام</th>
+                                <th scope="col" class="text-center">شماره تماس</th>
+                                <th scope="col" class="text-center">نام کاربری</th>
+                                <th scope="col" class="text-center">موجودی</th>
+                                <th scope="col" class="text-center">وضعیت</th>
+                                <th scope="col" class="text-center">عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.pagination.Items != null)
+                            {
+                                int i = 1;
+                                foreach (User item in ViewBag.pagination.Items)
+                                {
+                                    <tr>
+                                        <td scope="row">@i</td>
+                                        <td style="white-space: nowrap;">@item.Name</td>
+                                        <td style="white-space: nowrap;">@item.PhoneNumber</td>
+                                        <td style="white-space: nowrap;">@item.UserName</td>
+                                        <td style="white-space: nowrap;">@item.Balance</td>
+                                        <td style="white-space: nowrap;">
+                                            @if (item.Status)
+                                            {
+                                                <span class="badge bg-success">فعال</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-danger">غیرفعال</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <div style="display: flex; gap: 5px;">
+                                                <a href="/admin/pay/UserReports?UserId=@item.Id" class="btn btn-primary btn-sm"
+                                                    style="white-space: nowrap;">مشاهده گزارشات مالی</a>
+                                                <a href="/admin/home/UserStatus/@item.Id" class="btn btn-danger btn-sm"
+                                                    style="white-space: nowrap;"
+                                                    onclick="return confirm('آیا از تغییر وضعیت کاربر مطمئن هستید ؟')">تغییر
+                                                    وضعیت</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination pagination-sm justify-content-center">
+                        <li class="page-item @(ViewBag.Pagination.CurrentPage == 1 ? "disabled" : "")">
+                            <a class="page-link"
+                                href="@Url.Action("Index", new { page = ViewBag.Pagination.CurrentPage - 1 })">
+                                <i class="tf-icon bx bx-chevrons-right"></i>
+                            </a>
+                        </li>
+
+                        @if (ViewBag.Pagination.TotalPages <= 5)
+                        {
+                            for (int i = 1; i <= ViewBag.Pagination.TotalPages; i++)
+                            {
+                                <li class="page-item @(ViewBag.Pagination.CurrentPage == i ? "active" : "")">
+                                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li class="page-item @(ViewBag.Pagination.CurrentPage == 1 ? "active" : "")">
+                                <a class="page-link" href="@Url.Action("Index", new { page = 1 })">1</a>
+                            </li>
+
+                            @if (ViewBag.Pagination.CurrentPage > 3)
+                            {
+                                <li class="page-item disabled"><span class="page-link">...</span></li>
+                            }
+
+                            for (int i = Math.Max(2, ViewBag.Pagination.CurrentPage - 2); i <=
+                            Math.Min(ViewBag.Pagination.CurrentPage + 2, ViewBag.Pagination.TotalPages - 1); i++)
+                            {
+                                <li class="page-item @(ViewBag.Pagination.CurrentPage == i ? "active" : "")">
+                                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                                </li>
+                            }
+
+                            @if (ViewBag.Pagination.CurrentPage < ViewBag.Pagination.TotalPages - 2)
+                            {
+                                <li class="page-item disabled"><span class="page-link">...</span></li>
+                            }
+
+                            <li
+                                class="page-item @(ViewBag.Pagination.CurrentPage == ViewBag.Pagination.TotalPages ? "active" : "")">
+                                <a class="page-link"
+                                    href="@Url.Action("Index", new { page = ViewBag.Pagination.TotalPages })">@ViewBag.Pagination.TotalPages</a>
+                            </li>
+                        }
+
+                        <li
+                            class="page-item @(ViewBag.Pagination.CurrentPage == ViewBag.Pagination.TotalPages ? "disabled" : "")">
+                            <a class="page-link"
+                                href="@Url.Action("Index", new { page = ViewBag.Pagination.CurrentPage + 1 })">
+                                <i class="tf-icon bx bx-chevrons-left"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

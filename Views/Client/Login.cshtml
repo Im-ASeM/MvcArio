@@ -1,0 +1,105 @@
+@(Layout = null)
+<!doctype html>
+<html lang="en" class="h-100">
+
+
+<!-- signin.html   -->
+
+<head>
+
+
+
+
+    <!-- style css for this template -->
+    <link href="/assets/css/style.css" rel="stylesheet" id="style">
+</head>
+
+<body class="body-scroll d-flex flex-column dark-bg bg1" data-page="signin">
+
+
+    <!-- Begin page content -->
+    <main class="container-fluid  main-container">
+
+
+        <div class="row " style="margin-top: 100px;">
+            <div class="col-12 text-center">
+                <div class="logo-small">
+                    <img src="/assets/img/logo.png" alt="" class="img">
+
+                </div>
+            </div>
+
+            <div class="col-12 mx-auto text-center ">
+                <div class="row h-100">
+                    <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3 mx-auto align-self-center">
+                        <h3 class="text-center mb-4">به بازی آریو خوش آمدید</h3>
+                        <div class="card card-light shadow-sm mb-4">
+                            @if (TempData["Error"] != null)
+                            {
+                                <div class="alert alert-solid-danger alert-dismissible d-flex align-items-center"
+                                    role="alert">
+                                    @TempData["Error"]
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            }
+                            @if (TempData["Success"] != null)
+                            {
+                                <div class="alert alert-solid-success alert-dismissible d-flex align-items-center"
+                                    role="alert">
+                                    @TempData["Success"]
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            }
+                            <div class="card-body">
+                                <form class="was-validated" action="/Client/Login" method="post">
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control " name="Username">
+                                        <label for="emailaddress">نام کاربری</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control is-invalid" id="password"
+                                            placeholder="رمز عبور شما" name="Password">
+                                        <label for="password">کلمه عبور</label>
+                                    </div>
+
+                                    @* <div class="d-grid"><a href="forgotpassword.html" class="link mb-3">رمز عبور را فراموش
+                                        کرده اید؟</a></div> *@
+
+                                    <div class="d-grid"><button type="submit"
+                                            class="btn btn-lg btn-default shadow-sm">ورود</button></div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12 text-center align-self-end py-2">
+                <div class="row">
+                    <div class="col text-center">
+                        حساب کاربری ندارید؟ <a href="/Client/register" class="btn btn-link px-0 ms-2">ثبت نام<i
+                                class="bi bi-chevron-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Required jquery and libraries -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/vendor/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+
+<!-- signin.html  17:22:38 GMT -->
+
+</html>

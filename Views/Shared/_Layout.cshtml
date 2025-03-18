@@ -1,0 +1,460 @@
+﻿<!doctype html>
+<html lang="en">
+
+
+<!-- home.html   -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>قالب موبایلی</title>
+
+
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/assets/img/favicon180.png" sizes="180x180">
+    <link rel="icon" href="/assets/img/favicon32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/assets/img/favicon16.png" sizes="16x16" type="image/png">
+
+
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="/assets/font/bootstrap-icons.css">
+
+    <!-- nouislider CSS -->
+    <link href="/assets/vendor/nouislider/nouislider.min.css" rel="stylesheet">
+
+    <!-- swiper css -->
+    <link rel="stylesheet" href="/assets/vendor/swiperjs-6.6.2/swiper-bundle.min.css">
+
+    <!-- style css for this template -->
+    <link href="/assets/css/style.css" rel="stylesheet" id="style">
+</head>
+
+<body class="body-scroll" data-page="home">
+
+
+
+    <!-- Sidebar main menu -->
+    @* <div class="sidebar-wrap  sidebar-overlay">
+    <!-- Add pushcontent or fullmenu instead overlay -->
+    <div class="closemenu text-opac">بستن منو</div>
+    <div class="sidebar">
+        <div class="row mt-4 mb-3">
+            <div class="col-auto">
+                <figure class="avatar avatar-60 rounded mx-auto my-1">
+                    <img src="/assets/img/user2.jpg" alt="">
+                </figure>
+            </div>
+            <div class="col align-self-center ps-0">
+                <h6 class="mb-0">نیلوفر</h6>
+                <p class="text-opac">تهران ,ونک</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="stats.html">
+                            <div class="avatar avatar-40 rounded icon"><i class="bi bi-house-door"></i></div>
+                            <div class="col">داشبورد</div>
+                            <div class="arrow"><i class="bi bi-arrow-left"></i></div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                            <div class="avatar avatar-40 rounded icon"><i class="bi bi-shop"></i></div>
+                            <div class="col">خرید کنید</div>
+                            <div class="arrow"><i class="bi bi-plus plus"></i> <i class="bi bi-dash minus"></i>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item nav-link active" href="home.html">
+                                <div class="avatar avatar-40 rounded icon"><i class="bi bi-bag"></i></div>
+                                <div class="col">خرید خانه</div>
+                                <div class="arrow"><i class="bi bi-arrow-left"></i></div>
+                            </a></li>
+                            <li><a class="dropdown-item nav-link" href="product.html">
+                                <div class="avatar avatar-40 rounded icon"><i class="bi bi-binoculars"></i></div>
+                                <div class="col">تولید - محصول</div>
+                                <div class="arrow"><i class="bi bi-arrow-left"></i></div>
+                            </a></li>
+                            <li><a class="dropdown-item nav-link" href="cart.html">
+                                <div class="avatar avatar-40 rounded icon"><i class="bi bi-basket3"></i></div>
+                                <div class="col">سبد خرید</div>
+                                <div class="arrow"><i class="bi bi-arrow-left"></i></div>
+                            </a></li>
+                            <li><a class="dropdown-item nav-link" href="payment.html">
+                                <div class="avatar avatar-40 rounded icon"><i class="bi bi-credit-card"></i></div>
+                                <div class="col">پرداخت</div>
+                                <div class="arrow"><i class="bi bi-arrow-left"></i></div>
+                            </a></li>
+                            <li><a class="dropdown-item nav-link" href="my-orders.html">
+                                <div class="avatar avatar-40 rounded icon"><i class="bi bi-box-seam"></i></div>
+                                <div class="col">سفارشات من</div>
+                                <div class="arrow"><i class="bi bi-arrow-left"></i></div>
+                            </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="chat.html" tabindex="-1">
+                            <div class="avatar avatar-40 rounded icon"><i class="bi bi-chat-text"></i></div>
+                            <div class="col">پیام ها</div>
+                            <div class="arrow"><i class="bi bi-arrow-left"></i></div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="notifications.html" tabindex="-1">
+                            <div class="avatar avatar-40 rounded icon"><i class="bi bi-bell"></i></div>
+                            <div class="col">اطلاع</div>
+                            <div class="arrow"><i class="bi bi-arrow-left"></i></div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="settings.html" tabindex="-1">
+                            <div class="avatar avatar-40 rounded icon"><i class="bi bi-gear"></i></div>
+                            <div class="col">تنظیمات</div>
+                            <div class="arrow"><i class="bi bi-arrow-left"></i></div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages.html" tabindex="-1">
+                            <div class="avatar avatar-40 rounded icon"><i class="bi bi-file-earmark-text"></i></div>
+                            <div class="col">صفحات <span class="badge bg-info fw-light">جدید</span></div>
+                            <div class="arrow"><i class="bi bi-arrow-left"></i></div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="signin.html" tabindex="-1">
+                            <div class="avatar avatar-40 rounded icon"><i class="bi bi-box-arrow-right"></i></div>
+                            <div class="col">خروج</div>
+                            <div class="arrow"><i class="bi bi-arrow-left"></i></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div> *@
+    <!-- Sidebar main menu ends -->
+
+    <!-- Begin page -->
+    <main class="h-100 has-header has-footer">
+
+        <!-- Header -->
+        <header class="container-fluid header">
+            <div class="row">
+                <div class="col-auto align-self-center">
+                    <div class="btn btn-link" style="color: #FF1C52;">
+                        <i class="bi bi-list size-24"></i>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="logo-small">
+                        <img src="/assets/img/logo.png" alt="" class="img">
+
+                    </div>
+                </div>
+                <div class="col-auto align-self-center">
+                    <a href="/Client/profile" class="link text-color-theme" style="color: #FF1C52;">
+                        <i class="bi bi-person-circle size-22"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <!-- Header ends -->
+
+        <!-- main page content -->
+        <div class="main-container container">
+
+            @RenderBody()
+        </div>
+        <!-- main page content ends -->
+
+
+    </main>
+    <!-- Page ends-->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <ul class="nav nav-pills nav-justified">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Client/index">
+                        <span>
+                            <i class="nav-icon bi bi-house"></i>
+                            <span class="nav-text">صفحه اصلی</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Client/Trace">
+                        <span>
+                            <i class="nav-icon bi bi-bar-chart-line"></i>
+                            <span class="nav-text">گزارشات مالی</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item center-item">
+                    <a class="nav-link" href="/Client/AddMoney">
+                        <span>
+                            <i class="nav-icon bi bi-currency-dollar"></i>
+                            <span class="nav-text">افزودن موجودی </span>
+                            @* <span class="countercart">3</span> *@
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Client/Withdrawal">
+                        <span>
+                            <i class="nav-icon bi bi-wallet"></i>
+                            <span class="nav-text">برداشت وجه</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Client/profile">
+                        <span>
+                            <i class="nav-icon bi bi-gear"></i>
+                            <span class="nav-text">تنظیمات</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <!-- Footer ends-->
+
+
+    <!-- filter menu -->
+    <div class="filter">
+        <div class="card shadow h-100">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col align-self-center">
+                        <h6 class="mb-0">معیارهای فیلتر</h6>
+                        <p class="text-opac">2154 محصول</p>
+                    </div>
+                    <div class="col-auto px-0">
+                        <button class="btn btn-link text-danger filter-close">
+                            <i class="bi bi-x size-22"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body overflow-auto">
+                <div class="mb-4">
+                    <h6>دامنه را انتخاب کنید</h6>
+                    <div id="rangeslider" class="mt-4"></div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" min="0" max="500" value="100" step="1"
+                                id="input-select">
+                            <label for="input-select">کمترین</label>
+                        </div>
+                    </div>
+                    <div class="col-auto align-self-center"> به </div>
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" min="0" max="1000" value="100" id="input-number">
+                            <label for="input-number">بیشترین</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-floating mb-4">
+                    <select class="form-control" id="filtertype">
+                        <option selected="">پارچه ها</option>
+                        <option>الکترونیک</option>
+                        <option>مبلمان</option>
+                    </select>
+                    <label for="filtertype">نوع خرید را انتخاب کنید</label>
+                </div>
+
+                <div class="form-group floating-form-group active mb-4">
+                    <h6 class="mb-3">امکانات را انتخاب کنید</h6>
+
+                    <div class="form-check form-switch mb-2">
+                        <input type="checkbox" class="form-check-input" id="men" checked="">
+                        <label class="form-check-label" for="men">مردان</label>
+                    </div>
+                    <div class="form-check form-switch mb-2">
+                        <input type="checkbox" class="form-check-input" id="woman" checked="">
+                        <label class="form-check-label" for="woman">زنان</label>
+                    </div>
+                    <div class="form-check form-switch mb-2">
+                        <input type="checkbox" class="form-check-input" id="Sport">
+                        <label class="form-check-label" for="Sport">ورزش</label>
+                    </div>
+                    <div class="form-check form-switch mb-2">
+                        <input type="checkbox" class="form-check-input" id="homedecor">
+                        <label class="form-check-label" for="homedecor">دکور خانه</label>
+                    </div>
+                    <div class="form-check form-switch mb-2">
+                        <input type="checkbox" class="form-check-input" id="kidsplay">
+                        <label class="form-check-label" for="kidsplay">بازی بچه</label>
+                    </div>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="کلمه کلیدی">
+                    <label for="input-select">کلمه کلیدی</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <select class="form-control" id="discount">
+                        <option>10% </option>
+                        <option>30%</option>
+                        <option>50%</option>
+                        <option>80%</option>
+                    </select>
+                    <label for="discount">ارائه تخفیف</label>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-lg btn-default w-100 shadow-sm">جستجو کردن</button>
+            </div>
+        </div>
+    </div>
+    <!-- filter menu ends-->
+
+    <!-- event action toast messages -->
+    <div class="position-fixed top-0 start-50 translate-middle-x p-3  z-index-999">
+        <div id="toastprouctaddedtiny" class="toast bg-primary border-0 shadow hide mb-3" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">
+                <div class="row">
+                    <div class="col text-white">
+                        <p>محصول شما به سبد خرید اضافه شد</p>
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="نزدیک"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toastprouctadded" class="toast shadow hide mb-3" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto"><i class="bi bi-bag me-1"></i>تبریک میگم!!! </strong>
+                <small>همین الان</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="نزدیک"></button>
+            </div>
+            <div class="toast-body">
+                <h6 class="mb-0">محصول شما به سبد خرید اضافه شد</h6>
+                <p class="text-opac">این موقعیت را می توان در هر مکان دلخواه تغییر داد و اعمال کرد.</p>
+            </div>
+        </div>
+
+        <div id="toastprouctaddedrich" class="toast border-0 shadow hide mb-3" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">
+                    <i class="bi bi-basket text-color-theme rounded-circle me-1"></i>
+                    محصول به سبد خرید اضافه شد
+                </strong>
+                <small>همین الان</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="نزدیک"></button>
+            </div>
+            <div class="toast-body">
+                <div class="row gx-3">
+                    <div class="col-auto">
+                        <div class="avatar avatar-60 rounded page-bg p-2">
+                            <img src="/assets/img/product2.png" alt="" class="mw-100">
+                        </div>
+                    </div>
+                    <div class="col align-self-center">
+                        <h6 class="mb-1 text-color-theme" style="color: #FF1C52;">عینک آفتابی رینگ</h6>
+                        <p>
+                            <span class="text-opac">تحویل در 12 آبان </span>
+                            <span class="float-end"><strong>1500 تومان</strong></span>
+                        </p>
+                    </div>
+                    <div class="col-auto align-self-center">
+                        <i class="text-opac bi bi-chevron-left"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- event action toast messages ends -->
+
+    <!-- add cart modal -->
+    <div class="modal fade" id="addproductcart" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content product border-0 shadow-sm">
+                <figure class="text-center mb-0 px-5 py-3">
+                    <img src="/assets/img/apple.png" alt="" class="mw-100">
+                </figure>
+                <div class="modal-body">
+                    <p class="mb-1">
+                        <small class="text-opac">تازه </small>
+                        <small class="float-end"> <i class="bi bi-star-fill text-warning"></i> <span
+                                class="text-opac">4.5</span> </small>
+                    </p>
+                    <a href="product.html" class="text-normal">
+                        <h6 class="text-color-theme" style="color: #FF1C52;">سیب قرمز</h6>
+                    </a>
+                    <div class="row">
+                        <div class="col">
+                            <p class="mb-0">12000 تومان به <br><small class="text-opac">ازای هر 1 کیلوگرم</small></p>
+                        </div>
+                        <div class="col-auto">
+                            <!-- button counter increamenter-->
+                            <div class="counter-number">
+                                <button class="btn btn-sm avatar avatar-30 p-0 rounded-circle">
+                                    <i class="bi bi-dash size-22"></i>
+                                </button>
+                                <span>1</span>
+                                <button class="btn btn-sm avatar avatar-30 p-0 rounded-circle">
+                                    <i class="bi bi-plus size-22"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-link text-color-theme" data-bs-dismiss="modal">انجام
+                        شده</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- add cart modal ends -->
+
+
+
+
+    <!-- Required jquery and libraries -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/vendor/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <!-- swiper script -->
+    <script src="/assets/vendor/swiperjs-6.6.2/swiper-bundle.min.js"></script>
+
+    <!-- nouislider js -->
+    <script src="/assets/vendor/nouislider/nouislider.min.js"></script>
+
+    <!-- Customized jquery file  -->
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/color-scheme.js"></script>
+
+    <!-- page level custom script -->
+    <script src="/assets/js/app.js"></script>
+</body>
+
+<!-- home.html  17:21:14 GMT -->
+
+</html>

@@ -1,0 +1,85 @@
+<header class="container-fluid header">
+    <div class="row h-100">
+        <div class="col-auto align-self-center">
+            <a class="btn btn-link back-btn text-color-theme" onclick="goBack()" style="color: #FF1C52;">
+                <i class="bi bi-arrow-right size-20"></i>
+            </a>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+
+        </div>
+        <div class="col text-center align-self-center">
+            <h5 class="mb-0"></h5>
+        </div>
+
+        <div class="col-auto align-self-center">
+            <a href="/Client/profile" class="link text-color-theme" style="color: #FF1C52;">
+                <i class="bi bi-person-circle size-22"></i>
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- main page content -->
+<div class="main-container container">
+    <form action="/Client/profile" method="post">
+
+
+        <!-- add edit address form -->
+        <div class="row mb-3">
+            <div class="col">
+                <h5 class="mb-0 text-center"> اطلاعات کاربری</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-light shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                                <div class="form-group form-floating">
+                                    <input style="display: none;" name="Id" type="hidden" class="form-control">
+                                    <input name="Name" value="@ViewBag.User.Name" type="text" class="form-control">
+                                    <label class="form-control-label">اسم شما</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                                <div class="form-group form-floating">
+                                    <input readonly name="UserName" value="@ViewBag.User.UserName" type="text" class="form-control">
+                                    <label class="form-control-label">نام کاربری </label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                                <div class="form-group form-floating">
+                                    <input readonly name="PhoneNumber" value="@ViewBag.User.PhoneNumber" type="text" class="form-control">
+                                    <label class="form-control-label">شماره تلفن</label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                                <div class="form-group form-floating">
+                                    <input type="password" name="Password" class="form-control" value="@ViewBag.User.Password">
+                                    <label class="form-control-label">رمز عبور شما</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- change password -->
+
+
+        <div class="row h-100 mb-4">
+            <div class="col-12 d-grid"><button type="submit" class="btn btn-lg btn-default shadow-sm">به
+                    روزرسانی</button></div>
+        </div>
+
+    </form>
+</div>
+<!-- main page content ends -->
